@@ -1,6 +1,5 @@
 var _ = require('lodash');
 var Seik = require('Seik'); // Seik singleton
-var HarvesterCreator = require('HarvesterCreator'); // Defining creep creation strategies
 
 var maximumCreeps = [
 	{role:"harvester",max: 2}

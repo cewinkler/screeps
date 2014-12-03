@@ -2,7 +2,7 @@ var creator = require('Creator');
 module.exports = function() {
 	self = creator();
 	self.role = 'harvester';
-	self.body = [Game.WORK, Game.CARRY, Game.MOVE];
+	self.body = [Game.WORK, Game.CARRY, Game.MOVE, Game.MOVE];
 
 	self.process = function() {
 		if(creep.energy < creep.energyCapacity) {

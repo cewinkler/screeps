@@ -1,5 +1,7 @@
 var _ = require('lodash');
 var Harvester = require('HarvesterCreator');
+var Guard = require('GuardCreator');
+var Builder = require('BuildCreator');
 
 module.exports = new function () {
 		this.createCreep = function(creep) {
@@ -36,6 +38,10 @@ module.exports = new function () {
 			switch (creep) {
 				case 'harvester':
 					return new Harvester();
+				case 'guard':
+					return new Guard();
+				case 'builder':
+					return new Builder();
 				default:
 					return null;
 			}
