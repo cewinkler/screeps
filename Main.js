@@ -12,7 +12,9 @@ var maximumCreeps = [
 _.forEach(maximumCreeps, function(creep) {
 	console.log("Init: " + creep.role + " N: " + creep.max);
 	if (creep.role == "harvester" && countRole(creep.role) < creep.max) {
-		Seik.createCreep(new HarvesterCreator());
+		var obj = new HarvesterCreator();
+		console.log("Attempting to instantiate " + obj.role);
+		Seik.createCreep(obj);
 	}
 });
 
@@ -35,6 +37,5 @@ for(var name in Game.creeps) {
 
 function countRole(role) {
 	var count = _.where(Game.creeps, { memory: { role: role } }).length;
-	console.log("countRole of '" + role + "' returned " + count);
 	return count;
 }
