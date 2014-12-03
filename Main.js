@@ -10,7 +10,6 @@ var maximumCreeps = [
 ];
 
 _.forEach(maximumCreeps, function(creep) {
-	console.log("Init: " + creep.role + " N: " + creep.max);
 	if (creep.role == "harvester" && countRole(creep.role) < creep.max) {
 		var obj = new HarvesterCreator();
 		console.log("Attempting to instantiate " + obj.role);
