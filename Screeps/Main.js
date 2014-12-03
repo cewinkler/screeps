@@ -3,8 +3,8 @@ var _ = require('lodash');
 var Seik = require('Seik'); // Seik singleton
 
 var maximumCreeps = [
-	{role:"harvester",max: 1}
-	//{role:"guard",max: 4}
+	{role:"harvester",max: 4},
+	{role:"guard",max: 3}
 ];
 
 _.forEach(Game.creeps, function (creep) {

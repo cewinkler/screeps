@@ -13,16 +13,11 @@ module.exports = function () {
         tough: 5
     };
 
-    self.tick = function () {
-        console.log(self.role + " tick...");
-        if (self.exists()) self.process();
+    self.tick = function (creep) {
+        self.process(creep);
     };
 
-    self.process = function () { console.log(self.role + "process() not abstracted!"); };
-
-    self.exists = function () {
-        return (self.name.length > 0 && Game.creeps[self.name] != null);
-    };
+    self.process = function (creep) { console.log(self.role + "process() not abstracted!"); };
 
     self.getBuildCost = function () {
         var cost = 0;
