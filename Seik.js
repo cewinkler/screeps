@@ -1,4 +1,6 @@
 var _ = require('lodash');
+var Harvester = require('HarvesterCreator');
+
 module.exports = new function () {
 		this.createCreep = function(creep) {
 			if (creep == null) {
@@ -19,7 +21,24 @@ module.exports = new function () {
 		
 		this.countCreepRole = function(role) {
 		    return _.where(Game.creeps, { memory: { role: role }}).length;
-		}
+		};
+
+		this.tick = function(creep) {
+			var instance = getIstance(creep);
+			if (instance != null)
+				instance.tick();
+		};
+
+		// If parameter is a Game.creep object, return class based on role. Else return class based on creep parameter.
+		this.getInstance = function(creep) {
+			var instance = Game.creeps[creep];
+			if (instance != null) creep = instance.memory.role;
+			switch (creep) {
+				case 'harvester':
+					return new Harvester();
+				default:
+					return null;
+			}
+		};
 	};
-	
 	

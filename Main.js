@@ -9,15 +9,14 @@ var maximumCreeps = [
 var activeCreeps = [];
 
 _.forEach(maximumCreeps, function(creep) {
-	if (creep.role == "harvester" && Seik.countCreepRole(creep.role) < creep.max) {
-		var obj = new HarvesterCreator();
+	if (Seik.countCreepRole(creep.role) < creep.max) {
+		var obj = Seik.getInstance(creep.role);
 		console.log("Attempting to instantiate " + obj.role);
-		var result = Seik.createCreep(obj);
-		if (result != null) activeCreeps.push(result);
+		Seik.createCreep(obj);
 	}
 });
 
 // defining tick behaviour
-_.forEach(activeCreeps, function(creep) {
-	creep.tick();
+_.forEach(Game.creeps, function(creep) {
+	Seik.tick(creep);
 });
