@@ -1,6 +1,6 @@
-var creator = require('Creator');
+var Creator = require('Creator');
 module.exports = function() {
-	self = creator();
+	var self = Creator();
 	self.role = 'harvester';
 	self.body = [Game.WORK, Game.CARRY, Game.MOVE, Game.MOVE];
 
@@ -15,4 +15,5 @@ module.exports = function() {
 			creep.transferEnergy(Game.spawns.Spawn1)
 		}
 	}
+	return self;
 };

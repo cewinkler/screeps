@@ -1,6 +1,6 @@
-var creator = require('Creator');
+var Creator = require('Creator');
 module.exports = function() {
-	self = creator();
+	var self = Creator();
 	self.role = 'guard';
 	self.body = [Game.MOVE, Game.RANGED_ATTACK];
 
@@ -11,4 +11,5 @@ module.exports = function() {
 			creep.attack(targets[0]);
 		}
 	}
+	return self;
 };

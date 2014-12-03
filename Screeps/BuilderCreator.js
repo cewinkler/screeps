@@ -1,6 +1,6 @@
-var creator = require('Creator');
+var Creator = require('Creator');
 module.exports = function() {
-	self = creator();
+	var self = Creator();
 	self.role = 'builder';
 	self.body = [Game.MOVE, Game.CARRY, Game.MOVE, Game.WORK];
 
@@ -17,4 +17,5 @@ module.exports = function() {
 			}
 		}
 	}
+	return self;
 };
