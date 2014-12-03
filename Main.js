@@ -3,16 +3,18 @@ var builder = require('builder');
 var guard = require('guard');
 var _ = require('lodash');
 var Seik = require('Seik'); // Seik singleton
-var Creator = require('Creator'); // Defining creep creation strategies
+var HarvesterCreator = require('HarvesterCreator'); // Defining creep creation strategies
 
 var maximumCreeps = [
 	{role:"harvester",max: 1}
 ];
 
-for (var creep in maximumCreeps) {
-	if (creep.role == "harvester" && countRole(creep.role) < creep.max)
-		Seik.createCreep(new Creator.Harvester());
-}
+_.forEach(maximumCreeps, function(creep) {
+	console.log("Init: " + creep.role + " N: " + creep.max);
+	if (creep.role == "harvester" && countRole(creep.role) < creep.max) {
+		Seik.createCreep(new HarvesterCreator());
+	}
+});
 
 // defining tick behaviour
 for(var name in Game.creeps) {
@@ -32,5 +34,7 @@ for(var name in Game.creeps) {
 }
 
 function countRole(role) {
-	return _.where(Game.creeps, { memory: { role: role } }).length;
+	var count = _.where(Game.creeps, { memory: { role: role } }).length;
+	console.log("countRole of '" + role + "' returned " + count);
+	return count;
 }

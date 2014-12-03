@@ -1,6 +1,8 @@
-function () {
+console.log("Instantiating Seik.Logic...");
+module.exports = (function () {
 	return {
 		createCreep: function(creep) {
+			console.log("trying to create a creep of role " + creep.role);
 			var likeCreeps = _.filter(Game.creeps, { memory: {role: creep.role } });
 			var name = role + likeCreeps.length;
 			var result = Game.spawns.Spawn1.createCreep(creep.body, name);
@@ -11,4 +13,4 @@ function () {
 			console.log("Successfully created creep '" + name + "'");
 		}
 	};
-});
+} ) ();
