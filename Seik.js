@@ -3,7 +3,7 @@ module.exports = new function () {
 		this.createCreep = function(creep) {
 			if (creep == null) {
 				console.log("no creator provided");
-				return null;
+				return;
 			}
 			console.log("trying to create a creep of role " + creep.role);
 			var likeCreeps = _.filter(Game.creeps, { memory: {role: creep.role } });
@@ -12,11 +12,14 @@ module.exports = new function () {
 			console.log("Result of creating [" + creep.role + ":"+name+"]: " + result);
 			if (result < 0) {
 				console.log("Failed to create creep, Error " + result);
-				return null;
+				return;
 			}
-			creep.name = result;
 			console.log("Successfully created creep '" + name + "' ??");
-			return creep;
-			
 		};
+		
+		this.countCreepRole = function(role) {
+		    return _.where(Game.creeps, { memory: { role: role }}).length;
+		}
 	};
+	
+	
