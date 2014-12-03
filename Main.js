@@ -5,8 +5,6 @@ var maximumCreeps = [
 	{role:"harvester",max: 2}
 ];
 
-var activeCreeps = [];
-
 _.forEach(maximumCreeps, function(creep) {
 	if (Seik.countCreepRole(creep.role) < creep.max) {
 		var obj = Seik.getInstance(creep.role);
