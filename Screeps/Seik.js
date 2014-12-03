@@ -10,15 +10,11 @@ module.exports = new function () {
             console.log("no creator provided");
             return;
         }
-        //console.log("trying to create a creep of role " + creep.role);
         var name = self.getUniqueName(creep.role);
         var result = Game.spawns.Spawn1.createCreep(creep.body, name, { role: creep.role });
-        //console.log("Result of creating [" + creep.role + ":" + name + "]: " + result);
         if (result < 0) {
-            //console.log("Failed to create creep, Error " + result);
             return;
         }
-        //console.log("Successfully created creep '" + name + "'");
         return;
     };
 
