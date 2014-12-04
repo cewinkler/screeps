@@ -37,5 +37,14 @@ module.exports = function () {
     self.nearestFlag = function() {
         return self.creep.pos.findNearest(Game.FLAGS);
     };
+
+    self.getDistanceTo = function(object) {
+        var x1 = self.creep.pos.x;
+        var y1 = self.creep.pos.y;
+        var x2 = object.pos.x;
+        var y2 = object.pos.y;
+        return Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
+    }
+
     return self;
 }

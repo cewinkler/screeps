@@ -13,7 +13,7 @@ module.exports = new function () {
             return;
         }
         var name = self.getUniqueName(creep.role);
-        var result = Game.spawns.Spawn1.createCreep(creep.body, name, { role: creep.role });
+        var result = self.createCreep(creep.body, name, creep.role);
         if (result < 0) {
             console.log("Failed to create creep: " + result);
             return;

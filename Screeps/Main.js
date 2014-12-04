@@ -1,15 +1,15 @@
 var spawn = Game.spawns.Spawn1;
 var _ = require('lodash');
-var Seik = require('Seik'); // Seik singleton
+var Seik = require('Seik');
 
 var maximumCreeps = [
-	{role:"harvester",max: 3},
+	{role:"harvester", max: 4},
     { role: "guard", max: 3 },
-    { role: "medic", max: 3 },
-    { role: "harvester", max: 4},
+    { role: "medic", max: 1 },
+    { role: "builder", max: 1 },
     { role: "guard", max: 6 },
-    //{ role: "builder", max: 1 },
-    { role: "guard", max: 15 },
+    { role: "medic", max: 2 },
+    { role: "guard", max: 10 },
     { role: "builder", max: 3 },
 ];
 
@@ -34,4 +34,3 @@ _.forEach(maximumCreeps, function(creep) {
 		Seik.createCreep(obj);
 	}
 });
-
