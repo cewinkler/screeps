@@ -3,6 +3,7 @@ module.exports = function () {
     self.role = '';
     self.body = [];
     self.name = '';
+    self.creep = null;
     self.costs = {
         move: 50,
         work: 20,
@@ -14,10 +15,11 @@ module.exports = function () {
     };
 
     self.tick = function (creep) {
-        self.process(creep);
+        self.creep = creep;
+        self.process();
     };
 
-    self.process = function (creep) { console.log(self.role + "process() not abstracted!"); };
+    self.process = function () { console.log(self.role + "process() not abstracted!"); };
 
     self.getBuildCost = function () {
         var cost = 0;
@@ -28,8 +30,12 @@ module.exports = function () {
         return cost;
     };
 
-    self.nearestSpawn = function(creep) {
-        return creep.pos.findNearest(Game.MY_SPAWNS);
+    self.nearestSpawn = function() {
+        return self.creep.pos.findNearest(Game.MY_SPAWNS);
+    };
+
+    self.nearestFlag = function() {
+        return self.creep.pos.findNearest(Game.FLAGS);
     };
     return self;
 }

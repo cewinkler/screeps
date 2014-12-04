@@ -4,14 +4,14 @@ module.exports = function() {
 	self.role = 'harvester';
 	self.body = [Game.WORK, Game.CARRY, Game.MOVE, Game.MOVE];
 
-    self.process = function(creep) {
-        if (creep.energy < creep.energyCapacity) {
-            var source = creep.pos.findNearest(Game.SOURCES);
-            creep.moveTo(source);
-            creep.harvest(source);
+    self.process = function() {
+        if (self.creep.energy < self.creep.energyCapacity) {
+            var source = self.creep.pos.findNearest(Game.SOURCES);
+            self.creep.moveTo(source);
+            self.creep.harvest(source);
         } else {
-            creep.moveTo(self.nearestSpawn(creep));
-            creep.transferEnergy(self.nearestSpawn(creep));
+            self.creep.moveTo(self.nearestSpawn());
+            self.creep.transferEnergy(self.nearestSpawn());
         }
     };
 	return self;
