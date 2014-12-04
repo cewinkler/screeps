@@ -4,6 +4,8 @@ module.exports = function () {
     self.body = [];
     self.name = '';
     self.creep = null;
+    self.count = 0;
+
     self.costs = {
         move: 50,
         work: 20,
@@ -14,8 +16,9 @@ module.exports = function () {
         tough: 5
     };
 
-    self.tick = function (creep) {
+    self.tick = function (creep, count) {
         self.creep = creep;
+        self.count = count;
         self.process();
     };
 
@@ -45,6 +48,14 @@ module.exports = function () {
         var y2 = object.pos.y;
         return Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
     }
+
+    self.getSpawnsByDistance = function() {
+        if (Game.spawns.length == 1) return Game.spawns;
+        var spawns = [];
+        _.forEach(Game.spawns, function(s) {
+            spawns.push({ spawn: s, distance: self.getDistanceTo(s) });
+        });
+    };
 
     return self;
 }

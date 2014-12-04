@@ -7,11 +7,10 @@ var Medic = require('MedicCreator');
 
 module.exports = new function () {
     var self = this;
+    self.roleTracker = {};
+
     self.createCreep = function (creep) {
-        if (creep == null) {
-            console.log("Creep == null");
-            return;
-        }
+        if (creep == null) return;
         var name = self.getUniqueName(creep.role);
         var result = self.createCreep(creep.body, name, creep.role);
         if (result < 0) {
@@ -45,10 +44,17 @@ module.exports = new function () {
         }
     };
 
+    self.trackRole = function(role) {
+        if (self.roleTracker[role] == null) self.roleTracker[role] = 0;
+        else self.roleTracker[role]++;
+        return self.roleTracker[role];
+    }
+
     self.tick = function (creep) {
+        var count = self.trackRole(creep.memory.role);
         var instance = self.getInstance(creep);
         if (instance != null)
-            instance.tick(creep);
+            instance.tick(creep, count);
     };
 
     self.getUniqueName = function (role) {

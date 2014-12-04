@@ -9,7 +9,7 @@ var maximumCreeps = [
     { role: "builder", max: 1 },
     { role: "guard", max: 6 },
     { role: "medic", max: 2 },
-    { role: "guard", max: 10 },
+    { role: "guard", max: 12 },
     { role: "builder", max: 3 },
 ];
 
