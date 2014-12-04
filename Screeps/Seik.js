@@ -6,15 +6,10 @@ var Builder = require('BuilderCreator');
 module.exports = new function () {
     var self = this;
     self.createCreep = function (creep) {
-        if (creep == null) {
-            console.log("no creator provided");
-            return;
-        }
+        if (creep == null) return;
         var name = self.getUniqueName(creep.role);
         var result = Game.spawns.Spawn1.createCreep(creep.body, name, { role: creep.role });
-        if (result < 0) {
-            return;
-        }
+        if (result < 0) return;
         return;
     };
 
