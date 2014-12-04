@@ -4,7 +4,11 @@ var Seik = require('Seik'); // Seik singleton
 
 var maximumCreeps = [
 	{role:"harvester",max: 4},
-	{role:"guard",max: 10}
+	{ role: "guard", max: 3 },
+    { role: "harvester", max: 5 },
+    { role: "guard", max: 6 },
+    { role: "builder", max: 1 },
+    { role: "guard", max: 10 },
 ];
 
 _.forEach(Game.creeps, function (creep) {

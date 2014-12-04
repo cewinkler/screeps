@@ -27,5 +27,9 @@ module.exports = function () {
         }
         return cost;
     };
+
+    self.nearestSpawn = function(creep) {
+        return creep.pos.findNearest(Game.MY_SPAWNS);
+    };
     return self;
 }

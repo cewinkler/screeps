@@ -2,15 +2,16 @@ var Creator = require('Creator');
 module.exports = function() {
 	var self = Creator();
 	self.role = 'guard';
-	self.body = [Game.MOVE, Game.ATTACK, Game.MOVE, Game.ATTACK];
+	self.body = [Game.MOVE, Game.RANGED_ATTACK, Game.MOVE, Game.RANGED_ATTACK, Game.TOUGH, Game.TOUGH];
 
 	self.process = function (creep) {
-		var targets = creep.room.find(Game.HOSTILE_CREEPS);
-		if (targets.length) {
-		    creep.moveTo(targets[0]);
-		    creep.attack(targets[0]);
+		var target = creep.pos.findNearest(Game.HOSTILE_CREEPS);
+		if (target) {
+		    if (!creep.pos.inRangeTo(target, 3))
+		        creep.moveTo(target);
+            else creep.rangedAttack(target);
 		} else {
-		    creep.moveTo(creep.room.find(Game.MY_SPAWNS)[0]);
+		    creep.moveTo(self.nearestSpawn(creep));
 		}
 	}
 	return self;
