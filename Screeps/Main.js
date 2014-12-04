@@ -21,7 +21,7 @@ _.forEach(maximumCreeps, function(creep) {
 	    var cost = obj.getBuildCost();
         if (cost > spawn.energy) return;
         console.log("Attempting to instantiate " + obj.role + " for $" + cost);
-	    var stahp = true;
+	    stahp = true;
 		Seik.createCreep(obj);
 	}
 });
