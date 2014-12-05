@@ -47,9 +47,9 @@
     <Content Include="GuardCreator.js" />
     <Content Include="HarvesterCreator.js" />
     <Content Include="Main.js" />
-    <Content Include="TankCreator.js" />
     <Content Include="MedicCreator.js" />
     <Content Include="Seik.js" />
+    <Content Include="TankCreator.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 module.exports = function () {
     var self = {};
     self.role = '';
@@ -41,11 +43,11 @@ module.exports = function () {
         return self.creep.pos.findNearest(Game.FLAGS);
     };
 
-    self.getDistanceTo = function(object) {
-        var x1 = self.creep.pos.x;
-        var y1 = self.creep.pos.y;
-        var x2 = object.pos.x;
-        var y2 = object.pos.y;
+    self.getDistanceTo = function(toObject, fromObject) {
+        var x1 = (fromObject == null ? self.creep.pos.x : fromObject.pos.x);
+        var y1 = (fromObject == null ? self.creep.pos.y : fromObject.pos.y);
+        var x2 = toObject.pos.x;
+        var y2 = toObject.pos.y;
         return Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
     }
 
@@ -55,6 +57,15 @@ module.exports = function () {
         _.forEach(Game.spawns, function(s) {
             spawns.push({ spawn: s, distance: self.getDistanceTo(s) });
         });
+        return null;
+    };
+
+    self.getBody = function() {
+        return _.first(self.body, self.getMaximumBodySize());
+    };
+
+    self.getMaximumBodySize = function() {
+        return _.where(Game.structures, { structureType: Game.STRUCTURE_EXTENSION }).length + 5;
     };
 
     return self;

@@ -7,6 +7,7 @@ var maximumCreeps = [
     { role: "guard", max: 3 },
     { role: "medic", max: 1 },
     { role: "builder", max: 1 },
+    { role: "harvester", max: 8 },
     { role: "guard", max: 6 },
     { role: "medic", max: 2 },
     { role: "guard", max: 12 },
@@ -25,6 +26,7 @@ _.forEach(maximumCreeps, function(creep) {
 	    var obj = Seik.getInstance(creep.role);
 	    if (obj == null) return;
 	    var cost = obj.getBuildCost();
+	    console.log(obj.getMaximumBodySize());
 	    if (cost > spawn.energy) {
 	        stahp = true;
             return;

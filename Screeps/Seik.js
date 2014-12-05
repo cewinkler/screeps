@@ -12,7 +12,7 @@ module.exports = new function () {
     self.createCreep = function (creep) {
         if (creep == null) return;
         var name = self.getUniqueName(creep.role);
-        var result = self.createCreep(creep.body, name, creep.role);
+        var result = self.createCreep(creep.getBody(), name, creep.role);
         if (result < 0) {
             console.log("Failed to create creep: " + result);
             return;
