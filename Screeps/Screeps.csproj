@@ -47,6 +47,7 @@
     <Content Include="GuardCreator.js" />
     <Content Include="HarvesterCreator.js" />
     <Content Include="Main.js" />
+    <Content Include="Manager.js" />
     <Content Include="MedicCreator.js" />
     <Content Include="Seik.js" />
     <Content Include="SourceManager.js" />

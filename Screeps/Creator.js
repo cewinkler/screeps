@@ -43,14 +43,6 @@ module.exports = function () {
         return self.creep.pos.findNearest(Game.FLAGS);
     };
 
-    self.getDistanceTo = function(toObject, fromObject) {
-        var x1 = (fromObject == null ? self.creep.pos.x : fromObject.pos.x);
-        var y1 = (fromObject == null ? self.creep.pos.y : fromObject.pos.y);
-        var x2 = toObject.pos.x;
-        var y2 = toObject.pos.y;
-        return Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
-    }
-
     self.getSpawnsByDistance = function() {
         if (Game.spawns.length == 1) return Game.spawns;
         var spawns = [];
