@@ -11,7 +11,7 @@ var maximumCreeps = [
     { role: "guard", max: 6 },
     { role: "medic", max: 2 },
     { role: "guard", max: 12 },
-    { role: "builder", max: 3 },
+    { role: "builder", max: 3 }
 ];
 
 _.forEach(Game.creeps, function (creep) {

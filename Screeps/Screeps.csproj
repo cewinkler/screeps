@@ -49,6 +49,7 @@
     <Content Include="Main.js" />
     <Content Include="MedicCreator.js" />
     <Content Include="Seik.js" />
+    <Content Include="SourceManager.js" />
     <Content Include="TankCreator.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
