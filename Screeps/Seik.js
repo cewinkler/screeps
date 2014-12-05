@@ -4,10 +4,11 @@ var Guard = require('GuardCreator');
 var Builder = require('BuilderCreator');
 var Tank = require('TankCreator');
 var Medic = require('MedicCreator');
+var SourceManager = require('SourceManager');
 
 module.exports = new function () {
     var self = this;
-    self.roleTracker = {};
+    self.sourceManager = SourceManager();
 
     self.createCreep = function (creep) {
         if (creep == null) return;

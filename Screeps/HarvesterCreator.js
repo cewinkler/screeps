@@ -1,12 +1,13 @@
 var Creator = require('Creator');
-module.exports = function() {
-	var self = Creator();
+module.exports = function(target) {
+    var self = Creator();
+    self.sourceTarget = target;
 	self.role = 'harvester';
 	self.body = [Game.WORK, Game.CARRY, Game.MOVE, Game.MOVE];
 
     self.process = function() {
         if (self.creep.energy < self.creep.energyCapacity) {
-            var source = self.creep.pos.findNearest(Game.SOURCES);
+            var source = target == null?self.creep.pos.findNearest(Game.SOURCES):target;
             self.creep.moveTo(source);
             self.creep.harvest(source);
         } else {
